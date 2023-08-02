@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.Content
+
+@{
+    ViewBag.Title = "AddContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h1>İnceleme Ekleme</h1>
+<br />
+@using (Html.BeginForm("AddContent", "WriterPanelContent", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Başlık")
+        @Html.DropDownListFor(x => x.headingId, (List<SelectListItem>)ViewBag.vlh, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.headingId)
+        <br />
+        @Html.Label("Yazı")
+        @Html.TextAreaFor(x => x.contentValue, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.contentValue)
+        <br />
+        <button class="btn btn-success">Kaydet</button>
+    </div>
+}
+
